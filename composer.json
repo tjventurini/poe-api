@@ -1,0 +1,15 @@
+{
+    "name": "tjventurini/poe-api",
+    "description": "Client Library for Path of Exile API.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Venturini",
+            "email": "thomas@venturini.codes"
+        }
+    ],
+    "require": {
+        "tjventurini/dto": "^0.0.1"
+    }
+}
