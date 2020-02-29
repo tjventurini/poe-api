@@ -2,14 +2,27 @@
     "name": "tjventurini/poe-api",
     "description": "Client Library for Path of Exile API.",
     "type": "package",
-    "license": "MIT",
     "authors": [
         {
             "name": "Thomas Venturini",
             "email": "thomas@venturini.codes"
         }
     ],
+    "license": "MIT",
     "require": {
-        "tjventurini/dto": "^0.0.1"
+        "tjventurini/dto": "^0.0.1",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tjventurini\\PoeApi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tjventurini\\PoeApi\\PoeApiServiceProvider"
+            ]
+        }
     }
 }
