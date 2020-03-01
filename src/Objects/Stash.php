@@ -22,9 +22,9 @@ class Stash extends DTO
     public ?string $name;
 
     /**
-     * @var string
+     * @var null|string
      */
-    public string $league;
+    public ?string $league;
 
     /**
      * @var \Tjventurini\PoeApi\Objects\Account

@@ -16,9 +16,12 @@ class StashConverter extends Converter
      */
     public static function convert(array $stashes): array
     {
-        return collect($stashes['stashes'])
+        return collect($stashes)
             ->filter(function ($stash) {
                 return $stash['public'];
+            })
+            ->filter(function ($stash) {
+                return ($stash['accountName']);
             })
             ->map(function ($stash) {
                 // convert stash to Stash object

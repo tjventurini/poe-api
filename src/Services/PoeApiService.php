@@ -3,6 +3,7 @@
 namespace Tjventurini\PoeApi\Services;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cache;
 use Tjventurini\PoeApi\Converters\StashConverter;
 
 class PoeApiService
@@ -62,14 +63,27 @@ class PoeApiService
      *
      * @return array
      */
-    public function stashes(?string $id = null): array
+    public function stashes(?string $next_change_id = null): array
     {
-        // make request to api
-        $stashes = $this->request('GET', $this->stashes_url, [
-            'id' => $id,
-        ]);
+        // get last next_change_id from cache
+        // if there is none passed
+        $next_change_id = $next_change_id ?? Cache::get(config('poe-api.stashes_next_change_id_key'), null);
 
-        // TODO: persist last stash id
+        // create request params
+        $params = [
+            'query' => [
+                'id' => $next_change_id,
+            ],
+        ];
+
+        // make request to api
+        $response = $this->request('GET', $this->stashes_url, $params);
+
+        // extract stashes
+        $stashes = $response['stashes'];
+
+        // persist last stash id
+        Cache::put(config('poe-api.stashes_next_change_id_key'), $response['next_change_id']);
 
         // convert stashes into Stash objects and return
         return StashConverter::convert($stashes);

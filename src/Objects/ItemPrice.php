@@ -17,8 +17,8 @@ class ItemPrice extends DTO
     public bool $fixed;
 
     /**
-     * @var string
+     * @var null|string
      */
-    public string $currency;
+    public ?string $currency;
     // TODO: convert currency to object
 }

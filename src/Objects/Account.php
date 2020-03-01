@@ -9,10 +9,10 @@ class Account extends DTO
     /**
      * @var string
      */
-    public string $account_name;
+    public ?string $account_name;
 
     /**
-     * @var string
+     * @var null|string
      */
-    public string $last_character_name;
+    public ?string $last_character_name;
 }
