@@ -13,9 +13,8 @@ class PoeApiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ddi('boot');
         // merge config from package with instance
-        $this->mergeConfigFrom(__DIR__ . '../config/poe-api.php', 'poe-api');
+        $this->mergeConfigFrom(__DIR__ . '/../config/poe-api.php', 'poe-api');
     }
 
     /**
@@ -25,7 +24,6 @@ class PoeApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        ddi('register');
         // add binding for PoeApi for facade
         $this->app->bind('poe-api', function ($app) {
             // get values from config

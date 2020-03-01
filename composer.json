@@ -10,7 +10,7 @@
     ],
     "license": "MIT",
     "require": {
-        "tjventurini/dto": "^0.0.1",
+        "tjventurini/dto": "^0.0.3",
         "guzzlehttp/guzzle": "^6.5"
     },
     "autoload": {

@@ -3,7 +3,7 @@
 namespace Tjventurini\PoeApi\Services;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Collection;
+use Tjventurini\PoeApi\Converters\StashConverter;
 
 class PoeApiService
 {
@@ -33,15 +33,45 @@ class PoeApiService
         $this->app_url = $app_url;
         $this->stashes_url = $stashes_url;
         $this->client = new Client([
-            'base_url' => $this->app_url,
+            'base_uri' => $this->app_url,
         ]);
     }
 
     /**
-     * Return collection of stashes.
+     * Returns decoded response as array.
+     *
+     * @param string $method
+     * @param string $uri
+     * @param array  $params
+     *
+     * @return array
      */
-    public function stashes(): Collection
+    private function request(string $method, string $uri, array $params = []): array
     {
-        ddi($this->client);
+        $response = $this->client->request($method, $uri, $params)
+            ->getBody()
+            ->getContents();
+
+        return json_decode($response, 1);
+    }
+
+    /**
+     * Return collection of stashes.
+     *
+     * @param string|null $id
+     *
+     * @return array
+     */
+    public function stashes(?string $id = null): array
+    {
+        // make request to api
+        $stashes = $this->request('GET', $this->stashes_url, [
+            'id' => $id,
+        ]);
+
+        // TODO: persist last stash id
+
+        // convert stashes into Stash objects and return
+        return StashConverter::convert($stashes);
     }
 }
