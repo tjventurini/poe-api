@@ -59,7 +59,7 @@ class PoeApiService
     /**
      * Return collection of stashes.
      *
-     * @param string|null $id
+     * @param string|null $next_change_id
      *
      * @return array
      */
