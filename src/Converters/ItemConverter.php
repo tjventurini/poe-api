@@ -76,7 +76,10 @@ class ItemConverter extends Converter
         }
 
         // get the quantity
-        $quantity = (float) $elements[1] ?? 0;
+        // - get value
+        // - convert to float
+        $quantity = $elements[1] ?? 0;
+        $quantity = (float) $quantity;
 
         // extract currency
         $currency = $elements[2] ?? null;
