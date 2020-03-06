@@ -40,6 +40,7 @@ class StashConverter extends Converter
                     'items'   => $items,
                 ]);
             })
+            ->values()
             ->toArray();
     }
 
