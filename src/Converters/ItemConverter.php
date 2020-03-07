@@ -121,18 +121,20 @@ class ItemConverter extends Converter
     protected static function convertSockets(array $item): array
     {
         return collect($item['sockets'] ?? [])
-            ->map(function ($socket) {
-                $color = null;
-                if ($socket['sColour'] == 'R') {
-                    $color = 'red';
-                } else if ($socket['sColour'] == 'B') {
-                    $color = 'blue';
-                } else if ($socket['sColour'] == 'W') {
-                    $color = 'white';
-                } else if ($socket['sColour'] == 'G') {
-                    $color = 'green';
-                } else {
-                    ddi('color not found: ' . $socket['sColour']);
+            ->map(function ($socket) use ($item) {
+                // map through colors
+                switch ($socket['sColour']) {
+                    case 'R':
+                        $color = 'red';
+                        break;
+                    case 'B':
+                        $color = 'blue';
+                        break;
+                    case 'G':
+                        $color = 'green';
+                        break;
+                    default:
+                        $color = 'white';
                 }
 
                 return new ItemSocket([
