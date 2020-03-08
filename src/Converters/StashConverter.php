@@ -34,7 +34,7 @@ class StashConverter extends Converter
                 return new Stash([
                     'id'      => $stash['id'],
                     'public'  => $stash['public'],
-                    'name'    => $stash['name'] ?? null,
+                    'name'    => $stash['stash'],
                     'league'  => $stash['league'],
                     'account' => $Account,
                     'items'   => $items,
@@ -55,7 +55,7 @@ class StashConverter extends Converter
     protected static function convertAccount(array $stash): Account
     {
         return new Account([
-            'account_name'        => $stash['accountName'],
+            'name'                => $stash['accountName'],
             'last_character_name' => $stash['lastCharacterName'],
         ]);
     }
