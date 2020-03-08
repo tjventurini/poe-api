@@ -15,5 +15,4 @@ class ItemDimension extends DTO
      * @var int
      */
     public int $h;
-
 }

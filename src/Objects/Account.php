@@ -9,7 +9,7 @@ class Account extends DTO
     /**
      * @var string
      */
-    public ?string $name;
+    public string $name;
 
     /**
      * @var null|string
