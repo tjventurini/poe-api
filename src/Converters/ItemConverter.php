@@ -38,7 +38,7 @@ class ItemConverter extends Converter
                     'icon'          => $item['icon'],
                     'sockets'       => self::convertSockets($item),
                     'league'        => $item['league'],
-                    'type_line'     => $item['typeLine'],
+                    'line'          => $item['typeLine'],
                     'identified'    => $item['identified'],
                     'item_level'    => $item['ilvl'],
                     'flavour_text'  => implode("", $item['flavourText'] ?? []),
