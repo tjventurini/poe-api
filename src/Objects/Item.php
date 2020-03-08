@@ -57,11 +57,6 @@ class Item extends DTO
     public string $league;
 
     /**
-     * @var string
-     */
-    public string $type_line;
-
-    /**
      * @var int
      */
     public int $item_level;

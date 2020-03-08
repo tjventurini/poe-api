@@ -17,9 +17,9 @@ class Stash extends DTO
     public bool $public;
 
     /**
-     * @var null|string
+     * @var string
      */
-    public ?string $name;
+    public string $name;
 
     /**
      * @var null|string
