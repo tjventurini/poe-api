@@ -67,7 +67,10 @@ class PoeApiService
     {
         // get last next_change_id from cache
         // if there is none passed
-        $next_change_id = $next_change_id ?? Cache::get(config('poe-api.stashes_next_change_id_key'), null);
+        $next_change_id = $next_change_id
+                          ??
+                          Cache::get(config('poe-api.stashes_next_change_id_key'),
+                              config('poe-api.stashes_first_next_change_id'));
 
         // create request params
         $params = [
